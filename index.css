@@ -2,18 +2,24 @@
     padding: 0;
     margin: 0px;
 }
+.center{
+    float: center;
+    background: rgb(162, 162, 162);
+    width: 100%;
+    height: 1140;
+}
 
 .top_right {
-    float: center;
+    float: left;
     background: #CCC;
-    width: 100%;
+    width: 50%;
     height: 570px;
 }
 
 .P1 {
     float: left;
     background: rgb(255, 0, 0);
-    width: 50%;
+    width: 100%;
     height: 570px;
 }
 
