@@ -1,0 +1,52 @@
+* {
+    padding: 0;
+    margin: 0px;
+}
+
+.top_right {
+    float: center;
+    background: #CCC;
+    width: 100%;
+    height: 570px;
+}
+
+.P1 {
+    float: left;
+    background: rgb(255, 0, 0);
+    width: 50%;
+    height: 570px;
+}
+
+.top_left {
+    float: right;
+    width: 50%;
+    height: 570px;
+}
+
+.P2 {
+    float: center;
+    background: rgb(160, 14, 14);
+    width: 100%;
+    height: 285px;
+}
+
+.P3 {
+    float: center;
+    background: rgb(13, 194, 170);
+    width: 100%;
+    height: 285px;
+}
+
+.bottom_left {
+    float: left;
+    background: rgb(252, 162, 162);
+    width: 75%;
+    height: 570px;
+}
+
+.bottom_right {
+    float: right;
+    background: rgb(236, 232, 1);
+    width: 25%;
+    height: 570px;
+}
