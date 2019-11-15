@@ -13,12 +13,20 @@
             </div>
 
             <div id="login">
-                <form id="login-form" action="" method="POST">
+                <?php
+                    if (isset($_GET['prev']) && $_GET['prev'] == "cadastro"){
+                        ?> 
+                            <p id="sucesso">Cadastro efetuado com sucesso!</p>
+                        <?php
+                    }
+
+                ?>
+                <form id="login-form" action="validarLogin.php" method="POST">
                     <p class="descricao">E-mail:</p>
-                    <input id="email" type="text" placeholder="E-mail">
+                    <input id="email" name="nome" type="text" placeholder="Username">
                     <p><a href="#">Esqueceu seu login?</a></p>
-                    <p class="descricao">Senha:</p>
-                    <input  id = "senha" type="password" placeholder="Senha"><br>
+                    <p class="descricao" >Senha:</p>
+                    <input  id = "senha" name = "senha" type="password" placeholder="Senha"><br>
                     <p><a href="#">Esqueceu sua senha?</a></p><br><br>                    
                     <Button>Entrar</Button>
                 </form>

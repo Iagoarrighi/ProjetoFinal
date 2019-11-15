@@ -61,19 +61,18 @@ class localStorage{
 
 
 // Classe para controle de Login
-class user{
+class User{
   // Recupera os dados de um usuário já cadastrado
   function getUser($localStorage, $index){
     // Verifica se todos os parâmetros foram passados corretamente
     if (!isset($localStorage) || !isset($index)){ return -1; }
-    $users = $storage->getLocalStorage();
-    if (isset($users['index'])){ return $users[$index]; }  // Verifica se o usuário existe
+    $users = $localStorage->getLocalStorage();
+    if (isset($users[$index])){ return $users[$index]; }  // Verifica se o usuário existe
     return -1;
   }
-
-  // Procura pelo índice de um usuário no sistema
-  function findUser($storage, $userId){
-    if (!isset($userId)){ return -1; }
+  // Procura pelo indice de um usuário no sistema pelo Id
+  function findUserById($storage, $userId){
+    if (!isset($userId) || !isset($storage)){ return -1; }
 
     $users = $storage->getLocalStorage();
     for ($i = 0; count($users)>$i; $i++){
@@ -82,9 +81,30 @@ class user{
     return -1;
   }
 
+  // Procura pelo índice de um usuário no sistema pelo username
+  function findUserByName($storage, $user){
+    if (!isset($user) || !isset($storage)){ return -1; }
+
+    $users = $storage->getLocalStorage();
+    for ($i = 0; count($users)>$i; $i++){
+      if ($users[$i][1] == $user){ return $i;}
+    }
+    return -1;
+  }
+
   // Cria um novo usuário
   function createUser($storage, $userData){
+    // Verifica se todos os campos fora devidamente preenchidos
     if (!isset($storage) || !isset($userData)){ return -1; }
+    
+    // Verifica se o usuário já existe
+    if ($this->findUserByName($storage, $userData[0]) >= 0){ return -2 ; }
+    
+    // Cria um id único para cada usuário
+    $id = hash("md5", $userData[0]);
+    array_unshift($userData, $id);
+
+    // Armazena isto no local storage
     $storage->putOnLocalStorage($userData);
   }
 
@@ -102,7 +122,3 @@ class user{
      $storage->deleteFromLocalStorage($this->findUser($userId));
   }
 }
-
-$storage = new localStorage();
-$usuario = new user;
-
