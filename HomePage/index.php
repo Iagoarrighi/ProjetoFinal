@@ -20,13 +20,26 @@
                     </tr>
                 </table>
                 <table class="userspace">
+                    <?php 
+                    $logado = false;
+                    if ($logado){
+                        echo "Logado";
+                        // Gerar dinâmicamente com PHP com os dados cadastrais se logado
+                    }
+                        else{
+                        //Caso não esteja logado, mostrar o menu de login
+                    ?>
                     <tr>
                         <td class="links_td"><a href="../Assinar/assinar.html">Assine já</a></td>
                         <td class="links_td"><a href="login.html">Minha conta</a></td>
                         <td class="links_td"><a href="email.html">Email</a></td>
                         <td class="links_td" id="entrar"><a href="../Login/Login.html">Entrar</a></td>
                     </tr>
-                </table>
+                    <?php
+                        }
+                    ?>
+     
+                        </table>
             </div>
             <div class="parte-inferior">
                 <div class="menu">
