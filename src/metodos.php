@@ -122,3 +122,24 @@ class User{
      $storage->deleteFromLocalStorage($this->findUser($userId));
   }
 }
+
+// Verifica se o usuário está logado
+function checkLogin(){
+  if (isset($_COOKIE['uId'])){ return true; }
+  else{ return false; }
+}
+
+function gerarMenu($loged_user){
+  echo "
+    <div id='logado'>
+      <div id='nome'>$loged_user[1]</div>
+      <div id='menu-suspenso'>
+        <ul type='none'>
+          <li><a href = 'Conta/Perfil.php'>Conta</a></li>
+          <li><a href = 'Conta/Configurar.php'>Configurações</a></li>
+          <li><a href = 'Login/Logout.php'>Sair</a></li>
+        </ul>
+      </div>
+    </div>
+  ";
+}

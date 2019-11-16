@@ -36,6 +36,13 @@
         <?php    
     }
     $usuario = $usuarios->getUser($files, $indice);
+    if ($usuario[3] != $_POST['senha']){
+        ?>
+            <script>
+                location.href=`Login.php?err=senha`;
+            </script>
+        <?php        
+    }
 ?>
 
 <!-- Redireciona a pessoa para a tela inicial e cria o cookie de controle -->

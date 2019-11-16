@@ -1,3 +1,8 @@
+<?php
+    require_once("../src/metodos.php");
+    $usuarios_obj = new User;
+    $file_obj     = new localStorage;
+?>
 <!DOCTYPE html>
 <html> 
     <header>
@@ -21,19 +26,22 @@
                 </table>
                 <table class="userspace">
                     <?php 
-                    $logado = false;
+                    $uid = $_COOKIE['uId'];
+                    $logado = checkLogin();
                     if ($logado){
-                        echo "Logado";
+                        $loged_user = $usuarios_obj->findUserById($file_obj, $uid);
+                        $loged_user = $usuarios_obj->getUser($file_obj, $loged_user);
                         // Gerar dinâmicamente com PHP com os dados cadastrais se logado
+                        gerarMenu($loged_user);
                     }
                         else{
                         //Caso não esteja logado, mostrar o menu de login
                     ?>
                     <tr>
-                        <td class="links_td"><a href="../Assinar/assinar.html">Assine já</a></td>
-                        <td class="links_td"><a href="login.html">Minha conta</a></td>
-                        <td class="links_td"><a href="email.html">Email</a></td>
-                        <td class="links_td" id="entrar"><a href="../Login/Login.html">Entrar</a></td>
+                        <td class="links_td"><a description="Inscrever-se" href="../Assinar/assinar.html">Assine já</a></td>
+                        <td class="links_td"><a descrioption = "Login" href="/Login/Login.php">Cadastro</a></td>
+                        <td class="links_td"><a description = " Globomail"alt="Globomail" href="/Login/Login.php">Email</a></td>
+                        <td class="links_td" id="entrar"><a href="../Login/Login.php">Entrar</a></td>
                     </tr>
                     <?php
                         }
