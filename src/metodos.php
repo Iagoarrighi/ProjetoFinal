@@ -135,9 +135,9 @@ function gerarMenu($loged_user){
       <div id='nome'>$loged_user[1]</div>
       <div id='menu-suspenso'>
         <ul type='none'>
-          <li><a href = 'Conta/Perfil.php'>Conta</a></li>
-          <li><a href = 'Conta/Configurar.php'>Configurações</a></li>
-          <li><a href = 'Login/Logout.php'>Sair</a></li>
+          <li><a href = '/Conta/Perfil.php'>Conta</a></li>
+          <li><a href = '/Conta/Configurar.php'>Configurações</a></li>
+          <li><a href = '/Logout/Logout.php'>Sair</a></li>
         </ul>
       </div>
     </div>

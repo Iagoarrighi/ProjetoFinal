@@ -26,11 +26,13 @@
                 </table>
                 <table class="userspace">
                     <?php 
-                    $uid = $_COOKIE['uId'];
                     $logado = checkLogin();
                     if ($logado){
+                        $uid = $_COOKIE['uId'];
+
                         $loged_user = $usuarios_obj->findUserById($file_obj, $uid);
                         $loged_user = $usuarios_obj->getUser($file_obj, $loged_user);
+                        
                         // Gerar dinâmicamente com PHP com os dados cadastrais se logado
                         gerarMenu($loged_user);
                     }
@@ -51,7 +53,14 @@
             </div>
             <div class="parte-inferior">
                 <div class="menu">
-                        <svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+                    <div class="menu_escondido">
+                        <ul type = "none">
+                            <li><a href = "#"> Mais lidas </a></li>
+                            <li><a href = "#"> Recentes </a> </li>
+                            <li><a href = "#"> Contate-nos </a></li>
+                            <li><a href = "#"> Sobre </a></li>
+                    </div>
+                   <svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
                             <g>
                                 <rect id="svg_1" height="4" width="20" y="0"  x="0" stroke-width="1" fill="#fff"/>
                                 <rect id="svg_2" height="4" width="20" y="7"  x="0" stroke-width="1" fill="#fff"/>
@@ -68,7 +77,8 @@
                         <input placeholder="Pesquisar" type="text">
                     </form>
                 </div>
-            </div>      
+            </div>    
+             
         </div>
         <div class="top_right">
                 <div class="P1">
