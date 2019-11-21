@@ -33,5 +33,8 @@
             </div>     
         </div>
     </body>
+    <div class = "dev-info">
+        <p>© Davidson Souza e Yago Arrigui - 2019</div>
+    </div>
     <script src="Login.js"></script>
 </HTML>

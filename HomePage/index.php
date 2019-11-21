@@ -113,6 +113,8 @@
                     </figure>
                 </div>
             </div>
-        
+            <div class = "dev-info">
+                <p>© Davidson Souza e Yago Arrigui - 2019</div>
+            </div>
     </body>
 </html>
