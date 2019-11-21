@@ -1,7 +1,8 @@
 <?php
+    // Importando os métodos
     require_once("../src/metodos.php");
+    // Instanciando a classe do usuário
     $usuarios_obj = new User;
-    $file_obj     = new localStorage;
 ?>
 <!DOCTYPE html>
 <html> 
@@ -29,9 +30,10 @@
                     $logado = checkLogin();
                     if ($logado){
                         $uid = $_COOKIE['uId'];
+                        $usuarios_obj->constructor($uid);
 
-                        $loged_user = $usuarios_obj->findUserById($file_obj, $uid);
-                        $loged_user = $usuarios_obj->getUser($file_obj, $loged_user);
+                        $loged_user = $usuarios_obj->findUserById($uid);
+                        $loged_user = $usuarios_obj->getUser($loged_user);
                         
                         // Gerar dinâmicamente com PHP com os dados cadastrais se logado
                         gerarMenu($loged_user);
@@ -41,7 +43,7 @@
                     ?>
                     <tr>
                         <td class="links_td"><a description="Inscrever-se" href="../Assinar/assinar.html">Assine já</a></td>
-                        <td class="links_td"><a descrioption = "Login" href="/Login/Login.php">Cadastro</a></td>
+                        <td class="links_td"><a descrioption = "Login" href="/cadastro/cadastro.php">Cadastro</a></td>
                         <td class="links_td"><a description = " Globomail"alt="Globomail" href="/Login/Login.php">Email</a></td>
                         <td class="links_td" id="entrar"><a href="../Login/Login.php">Entrar</a></td>
                     </tr>
@@ -57,8 +59,8 @@
                         <ul type = "none">
                             <li><a href = "#"> Mais lidas </a></li>
                             <li><a href = "#"> Recentes </a> </li>
-                            <li><a href = "#"> Contate-nos </a></li>
-                            <li><a href = "#"> Sobre </a></li>
+                            <li><a href = "/Conta/Feedback.html"> Contate-nos </a></li>
+                            <li><a href = "sobre.html"> Sobre </a></li>
                     </div>
                    <svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
                             <g>

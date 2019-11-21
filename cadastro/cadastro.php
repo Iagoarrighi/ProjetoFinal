@@ -12,8 +12,8 @@
     // Se tudo estiver certo, cadastra o usuário
     require_once("../src/metodos.php");
     $usuario = new User;
-    $files = new localStorage;
-    $ret = $usuario->createUser($files, [$_POST['nome'], $_POST['email'], $_POST['senha']]);
+    $usuario->constructor(0);
+    $ret = $usuario->createUser([$_POST['nome'], $_POST['email'], $_POST['senha']]);
     // Caso dê tudo certo...
     if ($ret > 0){
 ?>
@@ -33,3 +33,8 @@
             echo "internal error";
         }
     }
+    ?>
+    <script>
+        // Redireciona para a tela de cadastro
+       location.href = "/cadastro/cadastro.html"
+    </script>

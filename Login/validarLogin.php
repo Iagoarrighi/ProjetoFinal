@@ -15,30 +15,34 @@
                 location.href="Login.php?err=campicomp";
             </script>
         <?php
-    }
+    }else{
 
     // Se tudo estiver certo, efetua o login
+
     // Chama as funções de controle    
     require_once("../src/metodos.php");
     // Instância das classes
     $usuarios = new User;
-    $files = new localStorage;
-
+    $usuarios->constructor(0);
+    
     // Busca pelo usuário nos registros locais
-    $indice = $usuarios->findUserByName($files, $_POST['nome']);
-
+    $indice = $usuarios->findUserByName($_POST['nome']);
+     
     // Caso não encontre, retorna para a tela de login
     if ($indice < 0){
         ?>
             <script>
-                location.href=`Login.php?err=inexiste`;
+               location.href=`Login.php?err=inexiste`;
             </script>
         <?php    
     }
-    $usuario = $usuarios->getUser($files, $indice);
-    if ($usuario[3] != $_POST['senha']){
-        ?>
+
+    $usuario = $usuarios->getUser($indice);
+    // Verifica se os hash's são iguais (O servidor não conhece a senha em sí)
+    if (hash_equals($usuario[3], crypt($_POST['senha'], $privateKEY))) {
+              ?>
             <script>
+                // Caso dê erro, volta para a pagina anterior
                 location.href=`Login.php?err=senha`;
             </script>
         <?php        
@@ -51,3 +55,5 @@
         location.href = "/";
     </script>
 <!-- Final do trecho JS/HTML -->
+<?php
+}
