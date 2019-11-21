@@ -49,7 +49,7 @@
                         }
                     ?>
      
-                        </table>
+                </table>
             </div>
             <div class="parte-inferior">
                 <div class="menu">
